@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    
+	<head>
+		<title>Hsing-wen Hsu's Personal Website</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Projects</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index.html">About</a></li>
+							<li><a href="cv.html">CV</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="hobbies.html">Hobbies</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/hsing-wen-hsu-8ab9091b7/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/hsingwenhsu" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								
+									<center><h1>Random Puppy Generator</h1></center>
+								
+								<center><span class="date">Personal Project</span></center>
+								<center><span class="date"><a href=https://github.com/hsingwenhsu/random_puppy_generator>Project Site</a></span></center>
+								<div class="image main">
+									<img src="images/puppy_cover.png" width="700" alt="centered image"/>
+									
+								</div>
+								<div>
+									<h2>Introduction</h2>
+                                        This is a python program created with OpenCV. 
+                                        Different types of puppies are generated within the program. <br>
+                                        I created this playful program for the website. Click the button below to get a randomly generated puppy that will make your day!
+                                        <ul class="actions special">
+                                           <li><button id="get_puppy">Click here to get your very own puppy!</button></li>
+                                        </ul>
+									<hr />
+                                    <h2>Puppy Attributes</h2>
+									<ul>
+                                        <li><h3>3 Kinds of Colors</h3></li>
+                                        <img src="images/color_type.png" height="90">
+                                        <li><h3>4 Types of Ears</h3></li>
+                                        <img src="images/eartype.png" height="90">
+                                        <li><h3>5 Looks of Eyes</h3></li>
+                                        <img src="images/eyetypes.png" width="800">
+                                    </ul>
+									
+									
+                                </div>
+                                <hr/>
+                                <ul class="actions special">
+									<li><a href="projects.html" class="button fit">Back to Project Page</a></li>
+								</ul>
+						</section>
+							
+					</div>
+
+				<!-- Footer -->
+					
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Copyright</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+			<script>
+				var button = document.getElementById('get_puppy')
+				
+				button.addEventListener('click', function(){
+					var color_id = (Math.floor(Math.random()*4)).toString();
+					var ear_id= (Math.floor(Math.random()*3)).toString();
+					var eye_id= (Math.floor(Math.random()*4)).toString();
+
+					console.log(color_id, ear_id, eye_id);
+					var namearr = ['images/puppies/'];
+					namearr.push(color_id);
+					namearr.push("_");
+					namearr.push(ear_id);
+					namearr.push("_");
+					namearr.push(eye_id);
+					namearr.push('.png');
+					var imagename = namearr.join("")
+					console.log(imagename)
+					Swal.fire({
+						title: "Here's your puppy!",
+						width: 600,
+						heigth: 600,
+						showCloseButton: true,
+						showConfirmButton: false,
+						html: `<img src= ${imagename} >`
+					});
+				});
+			</script>
+
+	</body>
+</html>

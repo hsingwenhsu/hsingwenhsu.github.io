@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hsing-wen Hsu's Personal Website</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Projects</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index.html">About</a></li>
+							<li><a href="cv.html">CV</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="hobbies.html">Hobbies</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/hsingwenhsu" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								
+									<center><h1>DApp: My Sprout Farm!</h1></center>
+								
+								<center><span class="date">Group member: Wei-zhen Tsai, Chia-ting Liu, Hsing-wen Hsu</span></center>
+								<center><span class="date"><a href=https://github.com/c-tsai/nmlab_final/>Project Site</a></span></center>
+								<div class="image main">
+									<img src="images/sproutfarm_cover.png" width="700" alt="centered image"/>
+									
+								</div>
+								<div>
+									<h2>Introduction</h2>
+									<p1>&nbsp;&nbsp;&nbsp;&nbsp;This is a decentralised sprout growing game created with Ethereum smart contract and NodeJS</p1>
+									<p2>We proposed a sprout farming simulating game DApp. Players start the game with $1000 and a 
+										random bean that costs $300. Players should try to plug the planted sprout at the moment when its price peaks.
+										This exact moment and price differ from sprouts to sprouts.
+									</p2><br>
+									<p3>&nbsp;&nbsp;&nbsp;&nbsp;Besides planting random beans, players can also get beans from the existing sprouts by letting them grow
+										into beanstalks and produce new beans. In addition, grown-up beanstalks also have pollens that can pollinize 
+										one another. By these means, the players may alter the traits of newer generations as they wish.
+									</p3>
+									<hr />
+                                    <h2>Tools</h2>
+									<ul>
+                                        <li>Ethereum Smart Contract</li>
+                                        <li>NodeJS</li>
+                                    </ul>
+									<hr />
+									<h2>Data Structure</h2>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Data Type</th>
+													<th>Description</th>
+												
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>DNA1 & DNA2</td>
+													<td>uint256, use each bits as an indication fo the traits. The two DNAs are parallel.</td>
+													
+												</tr>
+												<tr>
+													<td>Pollen</td>
+													<td>uint256[], indicate the DNAs of the pollens which have pollenize the current beanstalk.</td>
+													
+												</tr>
+												<tr>
+													<td>Gene</td>
+													<td> A special struct which contains attributes such as height, growing speed, width, ...
+														all of them are derived from DNA1 & DNA2.
+													</td>
+													
+												</tr>
+												
+												
+											</tbody>
+											
+										</table>
+									</div>
+									<hr />
+                                    <h2>Video Demo</h2>
+                                    <hr/>
+									<ul class="actions special">
+										<li><a href="projects.html" class="button fit">Back to Project Page</a></li>
+									</ul>
+								</div>
+						</section>
+							
+					</div>
+
+				<!-- Footer -->
+					
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Copyright</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
