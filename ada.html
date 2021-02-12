@@ -1,0 +1,388 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Hsing-wen Hsu's Personal Website</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/default.min.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            ul.a {
+              list-style-type: circle;
+            }
+            
+            ul.b {
+              list-style-type: square;
+            }
+            
+            ol.c {
+              list-style-type: upper-roman;
+            }
+            
+            ol.d {
+              list-style-type: lower-alpha;
+            }
+            </style>
+    </head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Projects</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li ><a href="index.html">About</a></li>
+							<li><a href="cv.html">CV</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="hobbies.html">Hobbies</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/hsing-wen-hsu-8ab9091b7/" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/hsingwenhsu" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								
+									<center><h1>ADA Challenge: Flexible Jobshop Problem</h1></center>
+								
+								<center><span class="date">Group member: Hon-Ning Ho, Cheng-Ji Lee, Matthieu Desir, Hsing-Wen Hsu</span></center>
+								<center><span class="date"><a href=https://github.com/hsingwenhsu/ADA-Challenge>Project Site</a></span></center>
+								
+								<div>
+									<h2>Introduction</h2>
+                                    <ul>
+
+									<li>This is a modeling of the flexible jobshop problem with Google's or-tools</li>
+                                    <li>This is a walkthrough of our code for the final challenge of the course Algorithm Design and Analysis. I spent a lot of time on reading the docs of Google or-tools, and I hope that this walkthrough is helpful for anyone who is trying to understand the sample code provided by Google. </li>
+									<li>For Algorithm Design and Analysis's final challenge, we are tasked to solve a flexible job shop problem. However, the input and output format specifications are slightly different from the traditional flexible job shop problem. Therefore, we modified the <a src ="https://github.com/google/or-tools/blob/stable/examples/python/flexible_job_shop_sat.py">sample code of the flexible jobshop problem</a> </li>
+                                    </ul>
+                                    <hr />
+									<h2>Final Challenge's Specifications</h2>
+									<p>According to <a src="https://hackmd.io/6zxbedYCSLe8M8hW1Su0ww#Resources">the final challenge page</a>: , the input format of the problem is: (This is an example. Also note that "slice" is equivalent to "machine" in traditional job shop problems)</p>
+                                    <pre><code>
+    3 #integer l -> # of slices available
+    3 #integer n -> # of jobs
+    3 #integer m1 -> #of operations in the job
+    1.0 #real number w1 -> weight of the job
+    1 10 0 # o1
+    1 5 1 1 #o2
+    1 7 1 1 #o3 
+    1 #integer m2-> # of operation sin the job
+    1.0 #real number w2 -> weight of the job
+    2 5 0 #two slices, label them o4, o5
+    1 #integer m3 -> #number of operations in the job
+    1.0 #real number w3 -> #weight of the job
+    1 7 0 #o6
+                                    </code></pre>
+                                    </hr>
+                                    <p>
+                                        The output format of the problem: </hr>
+                                        For each job, there will be new lines of the same number of the job's operations. The first integer in each line specifies the starting time of the corresponding operation and the rest of the integers represent the machines that the operation used. 
+                                        </hr>
+                                        <dt>Example: </dt>
+                                        <pre><code>
+    0 1 #the first job starts at time 0, machine 1 was used
+    10 2 #the second job starts at time 10, machine 2 was used
+    10 3 #the 
+    0 2 3
+    10 1
+                                        </code></pre>
+                                    <p/>
+                                </div>
+                                <p>The Metric to Optimize:      </p>
+                                <body>$$ max_i C_i + \Sigma_i w_iC_i $$</body>
+                                <p>To solve the problem, we adopted Google's OR-Tools, which is perfect for modeling constraint programming problems.</p>
+								<hr/>
+                                <h2>Explanation of the Code</h2>
+                                <ul>
+                                    <li>For the explanation of the code, the example test case is used</li>
+                                    <li>The example test case:</li>
+                                <pre><code>
+    3 #integer l -> # of slices available
+    3 #integer n -> # of jobs
+    3 #integer m1 -> #of operations in the job
+    1.0 #real number w1 -> weight of the job
+    1 10 0 # o1
+    1 5 1 1 # o2
+    1 7 1 1 # o3 
+    1 #integer m2-> # of operation sin the job
+    1.0 #real number w2 -> weight of the job
+    2 5 0 #two slices, label them o4, o5
+    1 #integer m3 -> #number of operations in the job
+    1.0 #real number w3 -> #weight of the job
+    1 7 0 #o6
+                                </code></pre>
+                                </ul>
+                                <h3>Input and Data Structure</h3>
+                        <ul>
+                            <li>
+                                I am more comfortable with the term machine. So I will not be using the term "slice" for explanation, but `slice` is still used in the code. 
+                            </li>
+                            <li>
+                                To set up constraint for the problem with OR-Tools, having a data structure for jobs and operation is really important. The function: <code>read_input()</code>, read the input files and return three information that we  will need for the modeling of the problem. 
+                                <pre><code>
+    jobs_data, weight, slice_num = read_input(name)
+                                </code></pre>
+                                <ul class="a">
+                                    <li>Format of <code>jobs_data</code>:
+                                        <pre><code>
+    [[(1, 10, []), (1, 5, [1]), (1, 7, [1])], [(2, 5, [])], [(1, 7, [])]]
+                                        </code></pre>
+                                        <ul class="b">
+                                            <li><code>(1, 10, []): </code></li>
+                                            <ul class="b">
+                                                <li>The first element represents the number of machines required for this operation (1). </li>    
+                                                <li>The second element represents the duration of the operation (10)</li>
+                                                <li>The third list represents the operation(s) that this operation depends on, in this case, the list is empty. </li>
+                                            </ul>
+                                        </ul>
+                                    </li>
+                                    <li>Format of <code>weight</code>
+                                        <pre><code>
+    [1.0, 1.0, 1.0]
+                                        </code></pre>
+                                        <ul class="b">
+                                            <li>There are 3 jobs, and they all have the same weights (1.0)</li>
+                                            <li><code>slice_num</code>: The number of machines we have.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Since this is a flexible job shop problem, we have to create alternatives for each operation. For example <code>op1_1</code> (the first operation of job 1) could be on machine 1, 2, 3. The <code>convert2flexible()</code> function creates alternative for each job. </li>
+                            <pre><code>
+    jobs = convert2flexible(jobs_data, slice_num)
+                            </code></pre>
+                            <ul class="a">
+                                <li>The format of jobs:</li>
+                                <pre><code>
+    [[[(10, 0, [], 1), (10, 1, [], 1), (10, 2, [], 1)], [(5, 0, [1], 1), (5, 1, [1], 1), (5, 2, [1], 1)], [(7, 0, [1], 1), (7, 1, [1], 1), (7, 2, [1], 1)]], [[(5, 0, [], 2), (5, 1, [], 2), (5, 2, [], 2)]], [[(7, 0, [], 1), (7, 1, [], 1), (7, 2, [], 1)]]]
+                                </code></pre>
+                                <ul class="b">
+                                    <li>
+                                        Let's take a closer look at the first operation of the first job:
+                                        <pre><code>
+    [(10, 0, [], 1), (10, 1, [], 1), (10, 2, [], 1)]
+                                        </code></pre>
+                                        <ul class="b">
+                                            <li>The first integer represents the duration of the operation (10). According to the specification of the final challenge, each operation's duration does not vary for different machines</li>
+                                            <li>The second integer represents the machine that this operation is on. Since there are three machines, we have three alternatives (0, 1, 2). The index starts with 0 for the convenience of indexing the machines in a list, but machines' labels should start from 1 for the output file. </li>
+                                            <li>The list represent the operations the operations that this operation depends on. In this case, the list is empty. </li>
+                                            <li>The last term represent the number of machines required for this operation. </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                        <h3>Flexible Jobshop Problem</h3>
+                        <ul>
+                            <li>Here's the explanation of the function <code>flexible_jobshop(jobs, weight, num_machines, filename)</code></li>
+                            <ul class="a">
+                                <li>Arguments:</li>
+                                <ul class="b">
+                                    <li><code>jobs</code>: The data of jobs and operations. Explained in the previous section.</li> 
+                                    <li><code>weight</code>: A list containing the weight of each job</li>
+                                    <li><code>num_machine</code>: The number of machines we have.</li>
+                                    <li><code>filename</code>: The name of the input file. This is used to create a corresponding output file int the output folder.</li>
+                                </ul>
+                            </ul>
+                            <li>
+                                At the very beginning, we specify the number of jobs, and machines: 
+                                <pre><code>
+    num_jobs = len(jobs) #3
+    all_jobs = range(num_jobs) #For indexing purpose 0, 1, 2
+    all_machines = range(num_machines) #For indexing purpose 0, 1, 2
+                                </code></pre>
+                            </li>
+                            <li>
+                                Create the constraint programming model with OR-Tools
+                                <code>model = cp_model.CpModel()</code>
+                            </li>
+                            <li>Compute the horizon of the problem (The sum of duration of each operation)
+                                <pre><code>
+    horizon = 0
+    for job in jobs:
+        for task in job:
+            horizon+=task[0][0] #sum the duration of each job's operation 
+                                </code></pre>
+                                <li>
+                                    Setting up empty lists and dictionaries to store information
+                                    <pre><code>
+    intervals_per_resources = collections.defaultdict(list) 
+    starts = {} 
+    ends = {}
+    presences = {}
+    job_ends = []
+                                    </code></pre>
+                                </li>
+                                    <ul class="a">
+                                        <li><code>intervals_per_resources</code></li>
+                                        <li><code>starts</code>
+                                        <ul class="b">
+                                            <li>Indexed by <code>(job_id, op_id)</code></li>
+                                            <li>Represents the starting time of the corresponding operation</li>
+                                        </ul>
+                                        </li>
+                                        <li><code>ends</code>
+                                        <ul class="b">
+                                            <li>Indexed by <code>(job_id, op_id)</code></li>
+                                            <li>Represents the ending time of the corresponding operation</li>
+                                        </ul>
+                                        </li>
+                                        <li><code>presences</code>
+                                        <ul class="b">
+                                            <li>Indexed by <code>(job_id, op_id)</code></li>
+                                            <li>Represents whether or not the corresponding operation is on the machine</li>
+                                        </ul>
+                                        </li>
+                                        <li>
+                                            <code>job_ends</code>
+                                            <ul class="b">
+                                                <li>Store the ending time of each operation</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </ul>
+                            </li>
+                            <li>Creating interval for each operation and alternative(choices of machines)
+                                <pre><code>
+    for job_id in all_jobs:
+    job = jobs[job_id]
+    num_tasks = len(job)
+    for task_id in range(num_tasks):
+        task = job[task_id]
+        num_alternatives = len(task) #number of entries for an op
+        all_alternatives = range(num_alternatives) 
+        dur = task[0][0] #duration of this op
+        #create main interval for tasks
+        suffix_name = '_j%i_t%i' % (job_id, task_id)
+        start = model.NewIntVar(0, horizon, 'start'+suffix_name)
+        duration = model.NewIntVar(dur, dur, 'duration'+suffix_name) #dur<=duration<=duration
+        end = model.NewIntVar(0, horizon, 'end'+suffix_name)
+        
+        interval = model.NewIntervalVar(start, duration, end, 'interval'+suffix_name)
+        #Store starts, ends
+        starts[(job_id, task_id)] = start
+        ends[(job_id, task_id)] = end
+        if num_alternatives > 1:
+            l_presences = []
+            for alt_id in all_alternatives:
+                alt_suffix = '_j%i_t%i_a%i' % (job_id, task_id, alt_id)
+                l_presence = model.NewBoolVar('presence'+alt_suffix)
+                l_start = model.NewIntVar(0, horizon, 'start'+alt_suffix)
+                #l_duration = model.NewIntVar(dur, dur, 'duration'+alt_suffix)
+                l_duration = dur
+                l_end = model.NewIntVar(0, horizon, 'end'+alt_suffix)
+                l_interval = model.NewOptionalIntervalVar(
+                    l_start, l_duration, l_end, l_presence,
+                    'interval'+alt_suffix)
+                l_presences.append(l_presence)
+                model.Add(start==l_start).OnlyEnforceIf(l_presence)
+                model.Add(duration==l_duration).OnlyEnforceIf(l_presence)
+                model.Add(end==l_end).OnlyEnforceIf(l_presence)
+                #add the local interval to the right machine
+                intervals_per_resources[task[alt_id][1]].append(l_interval)
+                presences[(job_id, task_id, alt_id)] = l_presence
+            
+            required_slice = task[0][3] #slice is in the third entry
+            model.Add(sum(l_presences)==required_slice)
+            #model.Add(sum(l_presences)==1)
+        else:
+            intervals_per_resources[task[0][1]].append(interval)
+            presences[(job_id, task_id, 0)] = model.NewConstant(1)
+
+        job_ends.append(end)
+        #end for all the jobs
+                                </code>
+                                </pre>
+                            </li>
+                            <li>
+                                Adding constraint for each job. (The starting time of the next job should not be earlier than the ending time of the current job.)
+                                <pre><code>
+    for job_id in all_jobs:
+        job = jobs[job_id]
+        for task_id, task in enumerate(job):
+            task = job[task_id]
+            for dep in task[0][2]:
+                model.Add(starts[(job_id, task_id)]>=ends[(job_id, dep-1)])
+                                </pre></code>
+                            </li>
+                            <li>
+                                Specify the metric that we are optimizing according to the instruction of the final challenge:
+                                <pre><code>
+    #makespan objective 
+    makespan = model.NewIntVar(0, horizon, 'makespan')
+    model.AddMaxEquality(makespan, job_ends)
+    #model.Minimize(makespan)
+    model.Minimize(cp_model.LinearExpr.ScalProd([ends[(job_id, task_id)] for job_id, job in enumerate(jobs) for task_id, task in enumerate(
+        job)], [math.ceil(weight[job_id]) for job_id, job in enumerate(jobs) for task_id, task in enumerate(
+        job)])+makespan) 
+                                </pre></code>
+                            </li>
+                            <li>
+                                Solve the model
+                                <pre><code>
+    solver = cp_model.CpSolver()
+    solution_printer = SolutionPrinter()
+    status = solver.SolveWithSolutionCallback(model, solution_printer)
+                                </code>
+                                </pre>
+                            </li>
+
+                        </ul>
+                    
+                    </hr>
+                    
+						</section>
+						
+						<ul class="actions special">
+							<li><a href="projects.html" class="button fit">Back to Project Page</a></li>
+                            
+                            
+						</ul>	
+                        
+                    
+					</div>
+
+				<!-- Footer -->
+					
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Copyright</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
