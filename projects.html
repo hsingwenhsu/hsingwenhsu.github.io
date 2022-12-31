@@ -1,170 +1,228 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <!--
 	Massively by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Hsing-wen Hsu's Personal Website</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <title>Hsing-wen Hsu's Personal Website</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+  </head>
+  <body class="is-preload">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <!-- Header -->
+      <header id="header">
+        <a href="index.html" class="logo">Projects</a>
+      </header>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+      <!-- Nav -->
+      <nav id="nav">
+        <ul class="links">
+          <li><a href="index.html">About</a></li>
+          <li><a href="cv.html">CV</a></li>
+          <li class="active"><a href="projects.html">Projects</a></li>
+          <!--<li><a href="hobbies.html">Hobbies</a></li>-->
+        </ul>
+        <ul class="icons">
+          <li>
+            <a href="#" class="icon brands fa-linkedin"
+              ><span class="label">Instagram</span></a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/hsingwenhsu"
+              class="icon brands fa-github"
+              ><span class="label">GitHub</span></a
+            >
+          </li>
+        </ul>
+      </nav>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Projects</a>
-					</header>
+      <!-- Main -->
+      <div id="main">
+        <!-- Post -->
+        <header class="major">
+          <h1>Past Projects</h1>
+        </header>
+        <section class="posts">
+          <header>
+            <h2>Item-Based Collaborative Filtering with Hasekll</h2>
+            <span class="date">Dec, 2022</span>
+            <a href="haskell.html" class="image fit"
+              ><img src="images/haskell/flowfinal.png"
+            /></a>
+          </header>
+          <div>
+            <p>
+              &ensp; Item-based Collaborative Filtering is an algorithm that computes
+              item similarity based on ratings or interactions by users. With
+              this algorithm, we can recommend users the items they might like
+              by computing the similarity between the items they actually like
+              and other items they haven’t bought or interacted with yet.
+            </p>
+			<p>
+				&ensp; This project implements the Item-based Collaborative Filtering algorithm with Haskell.
+				Different types of parallelizing strategies are explored and analyzed.
+			</p>
+          </div>
+        </section>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li ><a href="index.html">About</a></li>
-							<li><a href="cv.html">CV</a></li>
-							<li class="active"><a href="projects.html">Projects</a></li>
-							<!--<li><a href="hobbies.html">Hobbies</a></li>-->
-						</ul>
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-linkedin"><span class="label">Instagram</span></a></li>
-							<li><a href="https://github.com/hsingwenhsu" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
+        <section class="posts">
+          <header>
+            <h2>PostgreSQL Project: Columbia Course Search</h2>
+            <span class="date">Oct, 2021</span>
+            <a href="db.html" class="image fit"
+              ><img src="images/db_project/cover.png"
+            /></a>
+          </header>
 
-				<!-- Main -->
-					<div id="main">
+          <div>
+            <center>
+              <p>
+                A refinement of Columbia University's course searching website
+              </p>
+            </center>
+            <ul>
+              <li>PostgreSQL</li>
+              <li>Python (Flask)</li>
+              <li>ReactJS</li>
+              <li>TypeScript</li>
+              <li>Google Cloud Platform</li>
+            </ul>
+            <a href="db.html" class="button fit">More information</a>
+          </div>
+        </section>
+        <section class="posts">
+          <header>
+            <h2>ADA-Challenge: Flexible Jobshop Problem</h2>
+            <span class="date">Jan, 2021</span>
+          </header>
 
-						<!-- Post -->
-							<section class="post">
-								<header class="major">
-									<h1>Past Projects</h1>
+          <div>
+            <center>
+              <p>
+                A python program for flexible jobshop. Built with Google
+                OR-Tools.
+              </p>
+            </center>
+            <a href="ada.html" class="button fit">More information</a>
+          </div>
+        </section>
+        <section class="posts">
+          <article>
+            <header>
+              <span class="date">June, 2019</span>
+              <h2><a href="#">Real-time Video Chatroom</a></h2>
+            </header>
+            <a href="chatroom.html" class="image fit"
+              ><img src="images/chatroom_cover.png"
+            /></a>
+            <p>
+              A P2P real-time video chatroom developed with NodeJS, WebRTC,
+              OpenCV...
+            </p>
+            <ul class="actions special">
+              <li>
+                <a href="chatroom.html" class="button">More information</a>
+              </li>
+            </ul>
+          </article>
+          <article>
+            <header>
+              <span class="date">June, 2020</span>
+              <h2><a href="#">DApp: My Sprout Farm!</a></h2>
+            </header>
+            <a href="sproutfarm.html" class="image fit"
+              ><img src="images/sproutfarm_cover.png"
+            /></a>
+            <p>
+              A decentralized game app developed with Ethereum smart contract!
+            </p>
+            <ul class="actions special">
+              <li>
+                <a href="sproutfarm.html" class="button">More information</a>
+              </li>
+            </ul>
+          </article>
+        </section>
+        <section>
+          <h2>A Little Project for This Site: Random Puppy Generator!</h2>
+          <p>A python program that generates puppies of different looks!</p>
+          <div class="image main">
+            <img
+              src="images/puppy_cover.png"
+              width="700"
+              alt="centered image"
+            />
+          </div>
 
-								</header>
-								<h2>A Little Project for This Site: Random Puppy Generator!</h2>
-								<p>A python program that generates puppies of different looks!</p>
-								<div class="image main">
-									<img src="images/puppy_cover.png" width="700" alt="centered image"/>
+          <ul class="actions fit">
+            <li>
+              <a href="doggie.html" class="button fit">More information</a>
+            </li>
+            <li><button id="get_puppy">Get your very own puppy!</button></li>
+          </ul>
+        </section>
+      </div>
 
-								</div>
+      <!-- Footer -->
 
-								<ul class="actions fit">
-									<li><a href="doggie.html" class="button fit">More information</a></li>
-									<li><button id="get_puppy">Get your very own puppy!</button></li>
-								</ul>
-							</section>
-							<section class="posts">
-								<header>
-									<h2>PostgreSQL Project: Columbia Course Search</h2>
-									<span class="date">Oct, 2021</span>
-									<a href="db.html" class="image fit"><img src="images/db_project/cover.png" /></a>
-								</header>
+      <!-- Copyright -->
+      <div id="copyright">
+        <ul>
+          <li>&copy; Copyright</li>
+          <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+        </ul>
+      </div>
+    </div>
 
-								<div>
-									<center><p>A refinement of Columbia University's course searching website</p></center>
-									<ul>
-                                        <li>PostgreSQL</li>
-                                        <li>Python (Flask)</li>
-                                        <li>ReactJS</li>
-                                        <li>TypeScript</li>
-                                        <li>Google Cloud Platform</li>
-                                    </ul>
-									<a href="db.html" class="button fit">More information</a>
-								</div>
-							</section>
-							<section class="posts">
-								<header>
-									<h2>ADA-Challenge: Flexible Jobshop Problem</h2>
-									<span class="date">Jan, 2021</span>
-								</header>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+      var button = document.getElementById("get_puppy");
 
-								<div>
-									<center><p>A python program for flexible jobshop. Built with Google OR-Tools.</p></center>
-									<a href="ada.html" class="button fit">More information</a>
-								</div>
-							</section>
-							<section class="posts">
-								<article>
-									<header>
-										<span class="date">June, 2019</span>
-										<h2><a href="#">Real-time Video Chatroom</a></h2>
-									</header>
-									<a href="chatroom.html" class="image fit"><img src="images/chatroom_cover.png"/></a>
-									<p>A P2P real-time video chatroom developed with NodeJS, WebRTC, OpenCV...</p>
-									<ul class="actions special">
-										<li><a href="chatroom.html" class="button">More information</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<span class="date">June, 2020</span>
-										<h2><a href="#">DApp: My Sprout Farm!</a></h2>
-									</header>
-									<a href="sproutfarm.html" class="image fit"><img src="images/sproutfarm_cover.png" /></a>
-									<p>A decentralized game app developed with Ethereum smart contract!</p>
-									<ul class="actions special">
-										<li><a href="sproutfarm.html" class="button">More information</a></li>
-									</ul>
-								</article>
+      button.addEventListener("click", function () {
+        var ear_id = Math.floor(Math.random() * 3).toString();
+        var color_id = Math.floor(Math.random() * 2).toString();
+        var eye_id = Math.floor(Math.random() * 4).toString();
 
-
-
-
-							</section>
-
-					</div>
-
-				<!-- Footer -->
-
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; Copyright</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-			<script>
-				var button = document.getElementById('get_puppy')
-
-				button.addEventListener('click', function(){
-					var ear_id = (Math.floor(Math.random()*3)).toString();
-					var color_id= (Math.floor(Math.random()*2)).toString();
-					var eye_id= (Math.floor(Math.random()*4)).toString();
-
-					console.log(color_id, ear_id, eye_id);
-					var namearr = ['images/puppies/'];
-					namearr.push(color_id);
-					namearr.push("_");
-					namearr.push(ear_id);
-					namearr.push("_");
-					namearr.push(eye_id);
-					namearr.push('.png');
-					var imagename = namearr.join("")
-					console.log(imagename)
-					Swal.fire({
-						title: "Here's your puppy!",
-						width: 600,
-						heigth: 600,
-						showCloseButton: true,
-						showConfirmButton: false,
-						html: `<img src= ${imagename} >`
-					});
-				});
-			</script>
-
-	</body>
+        console.log(color_id, ear_id, eye_id);
+        var namearr = ["images/puppies/"];
+        namearr.push(color_id);
+        namearr.push("_");
+        namearr.push(ear_id);
+        namearr.push("_");
+        namearr.push(eye_id);
+        namearr.push(".png");
+        var imagename = namearr.join("");
+        console.log(imagename);
+        Swal.fire({
+          title: "Here's your puppy!",
+          width: 600,
+          heigth: 600,
+          showCloseButton: true,
+          showConfirmButton: false,
+          html: `<img src= ${imagename} >`,
+        });
+      });
+    </script>
+  </body>
 </html>
